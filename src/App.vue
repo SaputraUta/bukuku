@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Greet from "./components/Books.vue";
+import { RouterView } from "vue-router";
 import { ref } from "vue";
 const showSideBar = ref(false);
 </script>
@@ -8,17 +8,21 @@ const showSideBar = ref(false);
   <div class="flex min-h-screen">
     <div v-if="showSideBar" class="w-64 bg-gray-200 border-r border-gray-200">
       <div class="mt-16">
-        <a href="" class="flex gap-2 mb-8 hover:cursor-pointer hover:scale-105"
+        <router-link
+          to="/"
+          class="flex gap-2 mb-8 hover:cursor-pointer hover:scale-105"
           ><img src="./assets/house-solid.svg" alt="" class="ml-5" />
-          <p class="text-slate-800text-lg">Home</p></a
+          <p class="text-slate-800text-lg">Home</p></router-link
         >
-        <a href="" class="flex gap-2 mb-8 hover:cursor-pointer hover:scale-105"
+        <router-link
+          to="/about-us"
+          class="flex gap-2 mb-8 hover:cursor-pointer hover:scale-105"
           ><img src="./assets/phone-solid.svg" alt="" class="ml-5" />
-          <p class="text-slate-800 text-lg">Contact us</p></a
+          <p class="text-slate-800 text-lg">About us</p></router-link
         >
-        <a href="" class="flex gap-2 mb-8 hover:cursor-pointer hover:scale-105"
+        <router-link to="/contact-us" class="flex gap-2 mb-8 hover:cursor-pointer hover:scale-105"
           ><img src="./assets/address-book-solid.svg" alt="" class="ml-5" />
-          <p class="text-slate-800 text-lg">About us</p></a
+          <p class="text-slate-800 text-lg">Contact us</p></router-link
         >
       </div>
     </div>
@@ -43,11 +47,8 @@ const showSideBar = ref(false);
         </div>
       </div>
       <div class="ml-5 mt-5 mr-5">
-        <h2 class="text-3xl font-bold text-slate-800">List of books</h2>
-        <Greet class="mt-5" />
+        <router-view />
       </div>
     </div>
   </div>
 </template>
-
-<style scoped></style>
